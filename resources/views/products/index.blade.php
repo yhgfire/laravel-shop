@@ -37,9 +37,15 @@
                             <div class="col-3 product-item">
                                 <div class="product-content">
                                     <div class="top">
-                                        <div class="img"><img src="{{ $product->image_url}}" alt="" class=""></div>
-                                        <div class="price"><b>￥</b>{{$product->title}}</div>
+                                        <div class="img">
+                                            <a href="{{route('products.show',['product'=>$product->id])}}" class=""><img src="{{ $product->image_url}}" alt="" class=""></a>
 
+                                            </div>
+                                        <div class="price"><b>￥</b>{{$product->price}}</div>
+                                        <div class="title">
+                                            <a href="{{route('products.show',['product'=>$product->id])}}"
+                                               class="">{{$product->title}}</a>
+                                        </div>
                                     </div>
 
                                     <div class="bottom">
@@ -66,7 +72,7 @@
             $('.search-form select[name=order]').val(filters.order);
         })
 
-        $('.search-form select[name=order]').on('change',function () {
+        $('.search-form select[name=order]').on('change', function () {
             $('.search-form').submit();
         })
     </script>
