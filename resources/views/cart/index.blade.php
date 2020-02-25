@@ -21,18 +21,24 @@
                         @foreach ($cartItems as $item)
                             <tr data-id="{{$item->productSku->id}}">
                                 <td>
-                                    <input type="checkbox" name="select" id="" value="{{$item->productSku->id}}" {{$item->productSku->product->on_sale?'checked':'disable'}}>
+                                    <input type="checkbox" name="select" id=""
+                                           value="{{$item->productSku->id}}" {{$item->productSku->product->on_sale?'checked':'disable'}}>
                                 </td>
-                                <th class="product_info">
+                                <td class="product_info">
                                     <div class="preview">
-                                        <a href="{{route('products.show',[$item->productSku->product_id])}}" target="_blank" class="">
+                                        <a href="{{route('products.show',[$item->productSku->product_id])}}"
+                                           target="_blank" class="">
                                             <img src="{{$item->productSku->product->image_url}}" alt="" class="">
                                         </a>
 
                                     </div>
+                                    <div @if (!$item->productSku->product->on_sale) class="not_on_sale" @endif>
+                                        <span class="product_title">
+                                            <a href="" class=""></a>
+                                        </span>
+                                    </div>
 
-                                    
-                                </th>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
